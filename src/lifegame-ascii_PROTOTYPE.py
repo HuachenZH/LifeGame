@@ -56,7 +56,7 @@ def painting(arr: np.array, mappingDict: dict) -> str:
 
   
 if __name__ == "__main__":
-    arr = prepareArr("canva.png")
+    arr = prepareArr("canva1.png")
     mappingDict = {'0': ' ', '1': '@'}
     # print the initial state
     canvas = painting(arr, mappingDict)
@@ -102,7 +102,7 @@ if __name__ == "__main__":
                 #     # about ot live
         canvas = painting(arr, mappingDict)
         # clean the screen then print the result
-        time.sleep(0.5)
+        time.sleep(0.25)
         # print('\x1b[2J')
         os.system('cls')
         print(canvas)
