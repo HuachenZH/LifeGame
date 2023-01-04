@@ -1,5 +1,5 @@
 # ver-00 PROTOTYPE
-# Children: Rei
+# author: Rei
 
 import numpy as np
 from PIL import Image
