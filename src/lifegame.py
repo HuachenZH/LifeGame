@@ -8,6 +8,18 @@ col_background = (10, 10, 40)
 col_grid = (30, 30, 60)
 
 def update(surface, cur, sz):
+    """Update the canva from current state to next state.
+
+            Parameters:
+                    surface (?): seems like a pygame stuff
+
+                    cur (?): current state
+
+                    sz (int): cell size
+
+            Returns:
+                    nxt (?): seems like a pygame stuff. The next state.
+    """
     nxt = np.zeros((cur.shape[0], cur.shape[1]))
 
     for r, c in np.ndindex(cur.shape):
