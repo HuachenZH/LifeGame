@@ -1,6 +1,8 @@
-# LifeGame-ascii
-life game in ascii art
+# LifeGame
+## ~~blabla~~ intro
+I met some difficulties in my life so i decide to code something.  
+Life does not go well, and i'm going to code a life game, how ironic.
 
-
-# ref
-- c shell donut : https://hackaday.com/2020/07/10/mmm-obfuscated-shell-donuts/
+## functional needs
+I developped an ascii style lifegame earlier... however running python in a terminal is not performant. The program is not as smooth as the famous C donut.  
+So i decided to use the python game library.
