@@ -23,8 +23,16 @@ def img2arr(path_img:str) -> np.array:
 
 
 def prune_array(arr:np.array) -> np.array:
-    # before prune, all white dots are 256, black dots are 0
-    # i want that after prune, all white dots are 0, black dots are 1
+    """Prune the arrary.
+    Before prune, all white dots are 256, black dots are 0
+    After prune, all white dots are 0, black dots are 1
+
+            Parameters:
+                    arr (np.array): array transformed from the image
+
+            Returns:
+                    arr (np.array): array pruned.
+    """
     
     # fun fact: if you change the order of the following two lines,
     # there will be error with the vector
