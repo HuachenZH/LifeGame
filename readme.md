@@ -22,8 +22,9 @@ So i decided to use the python game library.
 - ~~create virtual env~~
 - ~~install libs~~
 - learn lifegame.py
-- clean up code
+- ~~clean up code~~
 - add feature
-  - read a canva (jpg, png)
+  - ~~read a canva (jpg, png)~~
   - make it an argument
-  - transform to vector
+  - set a default value for input path
+  - ~~transform to vector~~
