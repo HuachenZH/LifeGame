@@ -22,8 +22,19 @@ def img2arr(path_img:str) -> np.array:
     return arr
 
 
+def prune_array(arr:np.array) -> np.array:
+    # before prune, all white dots are 256, black dots are 0
+    # i want that after prune, all white dots are 0, black dots are 1
+    
+    # fun fact: if you change the order of the following two lines,
+    # there will be error with the vector
+    arr[arr < 128] = 1
+    arr[arr >= 128] = 0
+    return arr
+
 def canva(path_img:str):
-    img2arr(path_img)
+    arr = img2arr(path_img)
+    arr = prune_array(arr)
 
 
 
