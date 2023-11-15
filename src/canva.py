@@ -62,4 +62,4 @@ def canva2array(path_img:str):
 
 
 if __name__ == "__main__":
-    canva2array("../canvas/canva_small.jpg")
+    canva2array("canvas/canva_small.jpg")
