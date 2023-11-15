@@ -2,10 +2,29 @@
 import pygame
 import numpy as np
 
+from canva import canva2array
+
+import argparse
+import pdb
+
+
+
 col_about_to_die = (200, 200, 225)
 col_alive = (255, 255, 215)
 col_background = (10, 10, 40)
 col_grid = (30, 30, 60)
+
+
+# ------------------------79---------------------------------------------------
+
+def get_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--inputImagePath", help="Path to the input image",
+                        default="../canvas/canva_small.jpg")
+    args = parser.parse_args()
+    return args
+
+
 
 def update(surface, cur, sz):
     """Update the canva from current state to next state.
@@ -52,12 +71,19 @@ def init(dimx, dimy):
     return cells
 
 def main(dimx, dimy, cellsize):
+    # get arguments
+    args = get_args()
+    path_img = args.inputImagePath
+    
+    # initialize pygame    
     pygame.init()
     surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
     pygame.display.set_caption("____'s Game of Life")
 
-    cells = init(dimx, dimy)
+    # initialize array
+    cells = canva2array(path_img)
 
+    # game is on
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
