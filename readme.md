@@ -23,6 +23,10 @@ So i decided to use the python game library.
 - ~~install libs~~
 - learn lifegame.py
 - ~~clean up code~~
+  - remove argument cellsize in main (or maybe not, need to understand what it s doing)  
+    --> No it's better to keep it, a cell IS NOT a pixel.
+  - mission upgrade: add docstring and explain cellsize
+  - change variable name, col means color but not column
 - add feature
   - ~~read a canva (jpg, png)~~
   - ~~make it an argument~~
