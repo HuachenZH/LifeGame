@@ -69,7 +69,6 @@ def main(dimx, dimy, cellsize):
 
     # initialize array
     cells = canva2array(path_img)
-    breakpoint()
 
     # game is on
     while True:
@@ -83,4 +82,4 @@ def main(dimx, dimy, cellsize):
         pygame.display.update()
 
 if __name__ == "__main__":
-    main(120, 90, 8)
+    main(120, 90, 10)
