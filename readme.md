@@ -25,6 +25,6 @@ So i decided to use the python game library.
 - ~~clean up code~~
 - add feature
   - ~~read a canva (jpg, png)~~
-  - make it an argument
-  - set a default value for input path
+  - ~~make it an argument~~
+  - ~~set a default value for input path~~
   - ~~transform to vector~~
