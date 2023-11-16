@@ -90,6 +90,9 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
+            # change here
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                pygame.quit()
 
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
