@@ -57,18 +57,21 @@ def update(surface, cur, sz):
 
 
 
-def main(dimx, dimy, cellsize):
+def main(cellsize):
     # get arguments
     args = get_args()
     path_img = args.inputImagePath
     
+    # initialize array
+    cells = canva2array(path_img)
+    dimx = cells.shape[1]
+    dimy = cells.shape[0]
+
     # initialize pygame    
     pygame.init()
     surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
     pygame.display.set_caption("____'s Game of Life")
 
-    # initialize array
-    cells = canva2array(path_img)
 
     # game is on
     while True:
@@ -82,4 +85,4 @@ def main(dimx, dimy, cellsize):
         pygame.display.update()
 
 if __name__ == "__main__":
-    main(120, 90, 10)
+    main(10)
