@@ -20,6 +20,8 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--inputImagePath", help="Path to the input image",
                         default="../canvas/canva_small.jpg")
+    parser.add_argument("-c", "--cellSize", help="Size of a cell, on pixels.",
+                        default=10)
     args = parser.parse_args()
     return args
 
@@ -66,21 +68,21 @@ def update(surface, cur, sz):
 
 
 
-def main(cellsize):
+def main():
     # get arguments
     args = get_args()
     path_img = args.inputImagePath
+    cellsize = args.cellSize
     
     # initialize array
     cells = canva2array(path_img)
-    dimx = cells.shape[1]
-    dimy = cells.shape[0]
+    dimx = cells.shape[1] # width of input image
+    dimy = cells.shape[0] # height of input image
 
     # initialize pygame    
     pygame.init()
     surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
     pygame.display.set_caption("Conway's Game of Life")
-
 
     # game is on
     while True:
@@ -94,4 +96,4 @@ def main(cellsize):
         pygame.display.update()
 
 if __name__ == "__main__":
-    main(10)
+    main()
