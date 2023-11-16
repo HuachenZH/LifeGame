@@ -14,7 +14,7 @@ I developped an ascii style lifegame earlier... however running python in a term
 So i decided to use the python game library.
 - the canva size is not fixed
 - user can draw the initial state in paint, then save in jpg/png, then the program read it.
-- bonus feature: user can add blocks in real time, after the game launched
+- feature to be developped: user can add blocks in real time, after the game launched
 
 
 ## task list
@@ -25,10 +25,13 @@ So i decided to use the python game library.
 - ~~clean up code~~
   - remove argument cellsize in main (or maybe not, need to understand what it s doing)  
     --> No it's better to keep it, a cell IS NOT a pixel.
-  - mission upgrade: add docstring and explain cellsize
-  - change variable name, col means color but not column
+  - ~~mission upgrade: add docstring and explain cellsize~~
+  - ~~change variable name, col means color but not column~~
+  - ~~change dim: equal to input image size~~
 - add feature
   - ~~read a canva (jpg, png)~~
   - ~~make it an argument~~
   - ~~set a default value for input path~~
   - ~~transform to vector~~
+  - interactive with mouse. Mouse can draw new live cells.
+    - i asked chatgpt to give some ideas, seems working with mouse event. I need to
