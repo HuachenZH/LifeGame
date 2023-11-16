@@ -17,7 +17,7 @@ def img2arr(path_img:str) -> np.ndarray:
     # convert to greyscale, so that instead of having an array of three
     # dimensions (RGB), there is only one dimension left
     img = img.convert("L")
-    arr = np.ndarray(img)
+    arr = np.array(img)
     return arr
 
 
