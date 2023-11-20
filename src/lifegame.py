@@ -102,11 +102,15 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 drawing = True
                 cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
-            elif event.type == pygame.MOUSEBUTTONUP:
-                drawing = False
-                cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
-            elif event.type == pygame.MOUSEMOTION and drawing:
-                cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
+                while drawing:
+                    for event in pygame.event.get():
+                        if event.type == pygame.MOUSEMOTION and drawing:
+                            print("mouse motion")
+                            cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
+                        elif event.type == pygame.MOUSEBUTTONUP:
+                            print("mouse up")
+                            drawing = False
+                            cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
             print("for loop end")
 
         surface.fill(colour_grid)
