@@ -5,6 +5,11 @@ import argparse
 import pdb
 
 
+def update_grid():
+    print("test, drawing")
+    return
+
+
 def test():
     # init game
     pygame.init()
@@ -12,6 +17,7 @@ def test():
     pygame.display.set_caption("test mouse event")
 
     # game is on
+    drawing = False
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -19,11 +25,13 @@ def test():
                 return
             # mouse event stuffs
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                print("mouse button down")
+                drawing = True
+                update_grid()
             elif event.type == pygame.MOUSEBUTTONUP:
-                print("mouse button up")
-            elif event.type == pygame.MOUSEMOTION:
-                print("mouse motion")
+                drawing = False
+                update_grid()
+            elif event.type == pygame.MOUSEMOTION and drawing:
+                update_grid()
     return
 
 
