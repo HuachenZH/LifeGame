@@ -35,7 +35,7 @@ So i decided to use the python game library.
   - ~~transform to vector~~
   - interactive with mouse. Mouse can draw new live cells.
     - i asked chatgpt to give some ideas, seems working with mouse event. I need to
-    - mouse evnet test passed
+    - ~~mouse evnet test passed~~
     - get cursor postion
     - reflect position into canva
     - change the original update() function or write a new function
