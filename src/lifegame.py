@@ -63,8 +63,13 @@ def update(surface, cur, sz):
         # Display the current state:
         colour = colour if cur[r, c] == 1 else colour_background
         pygame.draw.rect(surface, colour, (c*sz, r*sz, sz-1, sz-1))
-
     return next
+
+
+
+def update_by_mouse_event():
+    print("test, drawing")
+    return
 
 
 
@@ -85,14 +90,22 @@ def main():
     pygame.display.set_caption("Conway's Game of Life")
 
     # game is on
+    drawing = False
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
             # change here
+            # mouse event stuffs
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                pygame.quit()
+                drawing = True
+                update_by_mouse_event()
+            elif event.type == pygame.MOUSEBUTTONUP:
+                drawing = False
+                update_by_mouse_event()
+            elif event.type == pygame.MOUSEMOTION and drawing:
+                update_by_mouse_event()
 
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
