@@ -67,8 +67,8 @@ def update(surface, cur, sz):
 
 
 
-def update_by_mouse_event():
-    print("test, drawing")
+def update_by_mouse_event(mouse_pos):
+    print(mouse_pos)
     return
 
 
@@ -100,12 +100,12 @@ def main():
             # mouse event stuffs
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 drawing = True
-                update_by_mouse_event()
+                update_by_mouse_event(pygame.mouse.get_pos())
             elif event.type == pygame.MOUSEBUTTONUP:
                 drawing = False
-                update_by_mouse_event()
+                update_by_mouse_event(pygame.mouse.get_pos())
             elif event.type == pygame.MOUSEMOTION and drawing:
-                update_by_mouse_event()
+                update_by_mouse_event(pygame.mouse.get_pos())
 
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
