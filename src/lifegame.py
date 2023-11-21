@@ -84,20 +84,37 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int, brushsi
                     cellsize (int): Cell size. The number of pixels of a 
                     cell's length
 
+                    brushsize (int): size of brush.
+
             Returns:
                     cur (np.ndarray): The current state updated by mouse 
                     event.
     """
     print(mouse_pos)
     row, col = mouse_pos[1] // cellsize, mouse_pos[0] // cellsize
-    # maybe i will need to break into two case, brushsize even or odd
-    # no, no need, there is math approach
+    # The formula below solves the scenario:
+    # If brushsize is odd, 3 for example, i want cells below to be alive:
+    # 0 0 0 0 0
+    # 0 + + + 0
+    # 0 + * + 0
+    # 0 + + + 0
+    # 0 0 0 0 0 (* is where the mouse clicked)
+    # If brushsize is even, 4 for example, i want cells below to be alive:
+    # 0 0 0 0 0 0
+    # 0 + + + + 0
+    # 0 + * + + 0
+    # 0 + + + + 0
+    # 0 + + + + 0 (* is where the mouse clicked)
+    # 0 0 0 0 0 0 (* is where the mouse clicked)
     part_small = (brushsize-1) // 2
     part_big  = brushsize - part_small
+    # The following conditions are for numpy slicing.
+    # np recognize cur[0:1], but it does not recognize cur[-1:1]
     row_left = row - part_small if row - part_small >= 0 else 0
     col_left = col - part_small if col - part_small >= 0 else 0
     row_right = row + part_big if row + part_big <= cur.shape[0] else cur.shape[0]
     col_right = col + part_big if col + part_big <= cur.shape[1] else cur.shape[1]
+    # Lives givens by the brush
     cur[row_left:row_right, col_left:col_right] = 1
     return cur
 
