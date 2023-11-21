@@ -40,7 +40,9 @@ So i decided to use the python game library.
     - ~~reflect position into canva~~
     - ~~update docstring of update()~~
     - ~~clean code~~
-    - merge branch, new branch for new feature
-    - new feature: brushsize
-      - integrate in code
-      - argparse
+    - ~~merge branch, new branch for new feature~~
+    - ~~new feature: brushsize~~
+      - ~~integrate in code~~
+      - ~~argparse~~
+    - ~~new feature: update canva in realtime~~
+- write doc
