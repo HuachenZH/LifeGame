@@ -1,6 +1,7 @@
 # https://beltoforion.de/en/recreational_mathematics/game_of_life.php
 import pygame
 import numpy as np
+from math import floor
 
 from canva import canva2array
 
@@ -89,8 +90,15 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int, brushsi
     """
     print(mouse_pos)
     row, col = mouse_pos[1] // cellsize, mouse_pos[0] // cellsize
-    cur[row, col] = 1
     # maybe i will need to break into two case, brushsize even or odd
+    # no, no need, there is math approach
+    part_small = (brushsize-1) // 2
+    part_big  = brushsize - part_small
+    row_left = row - part_small if row - part_small >= 0 else 0
+    col_left = col - part_small if col - part_small >= 0 else 0
+    row_right = row + part_big if row + part_big <= cur.shape[0] else cur.shape[0]
+    col_right = col + part_big if col + part_big <= cur.shape[1] else cur.shape[1]
+    cur[row_left:row_right, col_left:col_right] = 1
     return cur
 
 
@@ -114,7 +122,7 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -
     """
     # game is on
     drawing = False
-    brushsize = 2
+    brushsize = 4
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
