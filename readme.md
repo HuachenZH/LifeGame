@@ -37,6 +37,8 @@ So i decided to use the python game library.
     - i asked chatgpt to give some ideas, seems working with mouse event. I need to
     - ~~mouse evnet test passed~~
     - ~~get cursor postion~~
-    - reflect position into canva
-    - update docstring of update()
-    - new arguemnt: brushsize
+    - ~~reflect position into canva~~
+    - ~~update docstring of update()~~
+    - ~~clean code~~
+    - merge branch, new branch for new feature
+    - new feature: brushsize
