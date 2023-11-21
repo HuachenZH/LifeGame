@@ -95,22 +95,7 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.n
 
 
 
-def main():
-    # get arguments
-    args = get_args()
-    path_img = args.inputImagePath
-    cellsize = args.cellSize
-    
-    # initialize array
-    cells = canva2array(path_img)
-    dimx = cells.shape[1] # width of input image
-    dimy = cells.shape[0] # height of input image
-
-    # initialize pygame    
-    pygame.init()
-    surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
-    pygame.display.set_caption("Conway's Game of Life")
-
+def game_is_on(surface, cells, cellsize):
     # game is on
     drawing = False
     while True:
@@ -136,6 +121,30 @@ def main():
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
         pygame.display.update()
+    return
+
+
+
+def main():
+    # get arguments
+    args = get_args()
+    path_img = args.inputImagePath
+    cellsize = args.cellSize
+    
+    # initialize array
+    cells = canva2array(path_img)
+    dimx = cells.shape[1] # width of input image
+    dimy = cells.shape[0] # height of input image
+
+    # initialize pygame    
+    pygame.init()
+    surface = pygame.display.set_mode((dimx * cellsize, dimy * cellsize))
+    pygame.display.set_caption("Conway's Game of Life")
+
+    # game is on
+    game_is_on(surface, cells, cellsize)
+
+    
 
 if __name__ == "__main__":
     main()
