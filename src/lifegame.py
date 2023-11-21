@@ -121,11 +121,12 @@ def update_by_mouse_event(surface:pygame.surface.Surface, mouse_pos:tuple,
     col_right = col + part_big if col + part_big <= cur.shape[1] else cur.shape[1]
     # Lives givens by the brush
     cur[row_left:row_right, col_left:col_right] = 1
-
-    pygame.draw.rect(surface, (255, 255, 215), 
-                (col_left*cellsize, row_left*cellsize, cellsize-1, cellsize-1))
+    # update the surface in realtime when mouse draw stuffs
+    colour = (255, 255, 15)
+    rect = (col_left*cellsize, row_left*cellsize, 
+            (cellsize-1)*brushsize, (cellsize-1)*brushsize)
+    pygame.draw.rect(surface, colour, rect)
     pygame.display.update()
-
     return cur
 
 
