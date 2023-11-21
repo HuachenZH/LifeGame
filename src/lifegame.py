@@ -23,6 +23,8 @@ def get_args():
                         default="../canvas/canva_small.jpg")
     parser.add_argument("-c", "--cellSize", help="Size of a cell, on pixels.",
                         default=10)
+    parser.add_argument("-b", "--brushSize", help="Size of brush.",
+                        default=3)
     args = parser.parse_args()
     return args
 
@@ -121,7 +123,8 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int, brushsi
 
 
 # ------------------------79---------------------------------------------------
-def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -> None:
+def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, 
+               cellsize:int, brushsize:int) -> None:
     """Start Conway's lifegame.
 
             Parameters:
@@ -133,13 +136,14 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -
 
                     cellsize (int): Cell size. The number of pixels of a 
                     cell's length.
+                    
+                    brushsize (int): Brush size.
 
             Returns:
                     Never. 
     """
     # game is on
     drawing = False
-    brushsize = 4
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -166,7 +170,6 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
         pygame.display.update()
-    return
 
 
 
@@ -175,6 +178,7 @@ def main():
     args = get_args()
     path_img = args.inputImagePath
     cellsize = args.cellSize
+    brushsize = args.brushSize
     
     # initialize array
     cells = canva2array(path_img)
@@ -187,7 +191,7 @@ def main():
     pygame.display.set_caption("Conway's Game of Life")
 
     # game is on
-    game_is_on(surface, cells, cellsize)
+    game_is_on(surface, cells, cellsize, brushsize)
 
     
 
