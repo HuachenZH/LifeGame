@@ -92,7 +92,7 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int, brushsi
                     cur (np.ndarray): The current state updated by mouse 
                     event.
     """
-    print(mouse_pos)
+    # print(mouse_pos)
     row, col = mouse_pos[1] // cellsize, mouse_pos[0] // cellsize
     # The formula below solves the scenario:
     # If brushsize is odd, 3 for example, i want cells below to be alive:
@@ -157,15 +157,15 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray,
                 while drawing:
                     for event in pygame.event.get():
                         if event.type == pygame.MOUSEMOTION and drawing:
-                            print("mouse motion")
+                            # print("mouse motion")
                             cells = update_by_mouse_event(pygame.mouse.get_pos(), 
                                                           cells, cellsize, brushsize)
                         elif event.type == pygame.MOUSEBUTTONUP:
-                            print("mouse up")
+                            # print("mouse up")
                             drawing = False
                             cells = update_by_mouse_event(pygame.mouse.get_pos(),
                                                           cells, cellsize, brushsize)
-            print("for loop end")
+            # print("for loop end")
 
         surface.fill(colour_grid)
         cells = update(surface, cells, cellsize)
@@ -180,7 +180,7 @@ def main():
     cellsize = args.cellSize
     brushsize = args.brushSize
     
-    # initialize array
+    # initialize array from input image
     cells = canva2array(path_img)
     dimx = cells.shape[1] # width of input image
     dimy = cells.shape[0] # height of input image
