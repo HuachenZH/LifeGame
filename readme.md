@@ -42,3 +42,5 @@ So i decided to use the python game library.
     - ~~clean code~~
     - merge branch, new branch for new feature
     - new feature: brushsize
+      - integrate in code
+      - argparse

@@ -68,7 +68,7 @@ def update(surface:pygame.surface.Surface, cur:np.ndarray, sz:int) -> np.ndarray
 
 
 
-def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.ndarray:
+def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int, brushsize:int) -> np.ndarray:
     """Update the current state by mouse event. When the mouse is drawing on
     the canva, what it draw will be considered as live cells.
 
@@ -90,6 +90,7 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.n
     print(mouse_pos)
     row, col = mouse_pos[1] // cellsize, mouse_pos[0] // cellsize
     cur[row, col] = 1
+    # maybe i will need to break into two case, brushsize even or odd
     return cur
 
 
@@ -109,10 +110,11 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -
                     cell's length.
 
             Returns:
-                    Nothing. 
+                    Never. 
     """
     # game is on
     drawing = False
+    brushsize = 2
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -121,16 +123,19 @@ def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -
             # mouse event stuffs
             if event.type == pygame.MOUSEBUTTONDOWN:
                 drawing = True
-                cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
+                cells = update_by_mouse_event(pygame.mouse.get_pos(), 
+                                              cells, cellsize, brushsize)
                 while drawing:
                     for event in pygame.event.get():
                         if event.type == pygame.MOUSEMOTION and drawing:
                             print("mouse motion")
-                            cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
+                            cells = update_by_mouse_event(pygame.mouse.get_pos(), 
+                                                          cells, cellsize, brushsize)
                         elif event.type == pygame.MOUSEBUTTONUP:
                             print("mouse up")
                             drawing = False
-                            cells = update_by_mouse_event(pygame.mouse.get_pos(), cells, cellsize)
+                            cells = update_by_mouse_event(pygame.mouse.get_pos(),
+                                                          cells, cellsize, brushsize)
             print("for loop end")
 
         surface.fill(colour_grid)
