@@ -28,7 +28,7 @@ def get_args():
 
 
 # ------------------------79---------------------------------------------------
-def update(surface, cur, sz):
+def update(surface:pygame.surface.Surface, cur:np.ndarray, sz:int) -> np.ndarray:
     """Update the canva from current state to next state.
 
             Parameters:
@@ -63,11 +63,31 @@ def update(surface, cur, sz):
         # Display the current state:
         colour = colour if cur[r, c] == 1 else colour_background
         pygame.draw.rect(surface, colour, (c*sz, r*sz, sz-1, sz-1))
+
     return next
 
 
 
-def update_by_mouse_event(mouse_pos, cur, cellsize):
+# ------------------------79---------------------------------------------------
+def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.ndarray:
+    """Update the current state by mouse event. When the mouse is drawing on
+    the canva, what it draw will be considered as live cells.
+
+            Parameters:
+                    mouse_pos (tuple): the current position of mouse. 
+                    mouse_pos[0] is the x axis.
+                    mouse_pos[1] is the y axis.
+                    The origine is the left top most.
+
+                    cur (np.ndarray): The current state.
+
+                    cellsize (int): Cell size. The number of pixels of a 
+                    cell's length
+
+            Returns:
+                    cur (np.ndarray): The current state updated by mouse 
+                    event.
+    """
     print(mouse_pos)
     row, col = mouse_pos[1] // cellsize, mouse_pos[0] // cellsize
     cur[row, col] = 1
