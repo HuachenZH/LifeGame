@@ -32,7 +32,7 @@ def update(surface:pygame.surface.Surface, cur:np.ndarray, sz:int) -> np.ndarray
     """Update the canva from current state to next state.
 
             Parameters:
-                    surface (pygame.surface.Surface): the surface on which
+                    surface (pygame.surface.Surface): The surface on which
                     our pygame is displayed.
 
                     cur (np.ndarray): The current state
@@ -68,13 +68,12 @@ def update(surface:pygame.surface.Surface, cur:np.ndarray, sz:int) -> np.ndarray
 
 
 
-# ------------------------79---------------------------------------------------
 def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.ndarray:
     """Update the current state by mouse event. When the mouse is drawing on
     the canva, what it draw will be considered as live cells.
 
             Parameters:
-                    mouse_pos (tuple): the current position of mouse. 
+                    mouse_pos (tuple): The current position of mouse. 
                     mouse_pos[0] is the x axis.
                     mouse_pos[1] is the y axis.
                     The origine is the left top most.
@@ -95,7 +94,23 @@ def update_by_mouse_event(mouse_pos:tuple, cur:np.ndarray, cellsize:int) -> np.n
 
 
 
-def game_is_on(surface, cells, cellsize):
+# ------------------------79---------------------------------------------------
+def game_is_on(surface:pygame.surface.Surface, cells:np.ndarray, cellsize:int) -> None:
+    """Start Conway's lifegame.
+
+            Parameters:
+                    surface (pygame.surface.Surface): The surface on which our
+                    pygame is displayed. 
+
+                    cells (np.ndarray): Array of cells, live or dead. It will
+                    be represented on the surface.
+
+                    cellsize (int): Cell size. The number of pixels of a 
+                    cell's length.
+
+            Returns:
+                    Nothing. 
+    """
     # game is on
     drawing = False
     while True:
